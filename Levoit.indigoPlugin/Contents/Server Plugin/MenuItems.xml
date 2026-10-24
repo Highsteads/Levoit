@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuItems>
+    <MenuItem id="refreshAll">
+        <Name>Refresh All</Name>
+        <CallbackMethod>refreshAll</CallbackMethod>
+    </MenuItem>
+    <MenuItem id="listAccountDevices">
+        <Name>List Account Devices</Name>
+        <CallbackMethod>listAccountDevices</CallbackMethod>
+    </MenuItem>
+    <MenuItem id="testConnection">
+        <Name>Test Connection</Name>
+        <CallbackMethod>testConnection</CallbackMethod>
+    </MenuItem>
+    <MenuItem id="sep_info" isSeparator="true"/>
+    <MenuItem id="showPluginInfo">
+        <Name>Show Plugin Info</Name>
+        <CallbackMethod>showPluginInfo</CallbackMethod>
+    </MenuItem>
+</MenuItems>

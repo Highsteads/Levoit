@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Every action reads the purifier back after VeSync accepts the command, so
+     the device's states show what the purifier is doing, not what was asked.
+     Dashboards calls these same actions (executeAction with the device id). -->
+<Actions>
+    <Action id="setFanSpeed" deviceFilter="self.levoitPurifier">
+        <Name>Set Fan Speed</Name>
+        <CallbackMethod>actionSetFanSpeed</CallbackMethod>
+        <ConfigUI>
+            <Field id="lbl" type="label">
+                <Label>Setting a speed also switches the purifier on and into manual mode.</Label>
+            </Field>
+            <Field id="speed" type="menu" defaultValue="2">
+                <Label>Fan speed:</Label>
+                <List>
+                    <Option value="1">1 (lowest)</Option>
+                    <Option value="2">2</Option>
+                    <Option value="3">3</Option>
+                    <Option value="4">4 (highest)</Option>
+                </List>
+            </Field>
+        </ConfigUI>
+    </Action>
+
+    <Action id="setMode" deviceFilter="self.levoitPurifier">
+        <Name>Set Mode</Name>
+        <CallbackMethod>actionSetMode</CallbackMethod>
+        <ConfigUI>
+            <Field id="mode" type="menu" defaultValue="auto">
+                <Label>Mode:</Label>
+                <List>
+                    <Option value="auto">Automatic (follows the air quality)</Option>
+                    <Option value="manual">Manual (keeps its fan speed)</Option>
+                    <Option value="sleep">Sleep (quietest)</Option>
+                </List>
+            </Field>
+        </ConfigUI>
+    </Action>
+
+    <Action id="setAutoPreference" deviceFilter="self.levoitPurifier">
+        <Name>Set Automatic Mode Setting</Name>
+        <CallbackMethod>actionSetAutoPreference</CallbackMethod>
+        <ConfigUI>
+            <Field id="lbl" type="label">
+                <Label>How hard automatic mode works. The room size the VeSync app holds is kept.</Label>
+            </Field>
+            <Field id="preference" type="menu" defaultValue="default">
+                <Label>Setting:</Label>
+                <List>
+                    <Option value="default">Default</Option>
+                    <Option value="efficient">Efficient (cleans faster)</Option>
+                    <Option value="quiet">Quiet</Option>
+                </List>
+            </Field>
+        </ConfigUI>
+    </Action>
+
+    <Action id="setChildLock" deviceFilter="self.levoitPurifier">
+        <Name>Set Child Lock</Name>
+        <CallbackMethod>actionSetChildLock</CallbackMethod>
+        <ConfigUI>
+            <Field id="value" type="menu" defaultValue="on">
+                <Label>Child lock:</Label>
+                <List>
+                    <Option value="on">On</Option>
+                    <Option value="off">Off</Option>
+                    <Option value="toggle">Toggle</Option>
+                </List>
+            </Field>
+        </ConfigUI>
+    </Action>
+
+    <Action id="setDisplay" deviceFilter="self.levoitPurifier">
+        <Name>Set Display</Name>
+        <CallbackMethod>actionSetDisplay</CallbackMethod>
+        <ConfigUI>
+            <Field id="value" type="menu" defaultValue="off">
+                <Label>Display:</Label>
+                <List>
+                    <Option value="on">On</Option>
+                    <Option value="off">Off</Option>
+                    <Option value="toggle">Toggle</Option>
+                </List>
+            </Field>
+        </ConfigUI>
+    </Action>
+
+    <Action id="setSleepTimer" deviceFilter="self.levoitPurifier">
+        <Name>Set Switch-Off Timer</Name>
+        <CallbackMethod>actionSetSleepTimer</CallbackMethod>
+        <ConfigUI>
+            <Field id="lbl" type="label">
+                <Label>The purifier switches itself off after this many minutes. 0 clears a timer already set.</Label>
+            </Field>
+            <Field id="minutes" type="textfield" defaultValue="60">
+                <Label>Minutes:</Label>
+            </Field>
+        </ConfigUI>
+    </Action>
+
+    <Action id="resetFilter" deviceFilter="self.levoitPurifier">
+        <Name>Reset Filter Life</Name>
+        <CallbackMethod>actionResetFilter</CallbackMethod>
+        <ConfigUI>
+            <Field id="lbl" type="label">
+                <Label>Sets the filter life back to 100%. Only do this after fitting a new filter.</Label>
+            </Field>
+        </ConfigUI>
+    </Action>
+
+    <Action id="refreshNow">
+        <Name>Refresh All Purifiers Now</Name>
+        <CallbackMethod>actionRefresh</CallbackMethod>
+    </Action>
+</Actions>

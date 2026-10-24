@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PluginConfig>
+    <Field id="lbl_creds" type="label">
+        <Label>Your VeSync account, the one the Levoit app signs in to. The plugin reads VESYNC_USERNAME, VESYNC_PASSWORD and VESYNC_COUNTRY from IndigoSecrets.py first, and only uses these boxes for whatever that file does not have.</Label>
+    </Field>
+    <Field id="username" type="textfield" defaultValue="">
+        <Label>Email address:</Label>
+    </Field>
+    <Field id="password" type="textfield" defaultValue="" secure="true">
+        <Label>Password:</Label>
+    </Field>
+    <Field id="country" type="textfield" defaultValue="GB">
+        <Label>Account country:</Label>
+    </Field>
+    <Field id="lbl_country" type="label" fontSize="small" fontColor="darkgray">
+        <Label>Two letters, as the account was set up: GB for the UK, US, DE and so on.</Label>
+    </Field>
+
+    <Field id="sep_poll" type="separator"/>
+    <Field id="pollSeconds" type="textfield" defaultValue="60">
+        <Label>Check every (seconds):</Label>
+    </Field>
+    <Field id="lbl_poll" type="label" fontSize="small" fontColor="darkgray">
+        <Label>30 at the least: VeSync limits how often an account can ask.</Label>
+    </Field>
+
+    <Field id="sep_log" type="separator"/>
+    <Field id="logLevel" type="menu" defaultValue="INFO">
+        <Label>Logging level:</Label>
+        <List>
+            <Option value="DEBUG">Debug</Option>
+            <Option value="INFO">Info</Option>
+            <Option value="WARNING">Warning</Option>
+        </List>
+    </Field>
+</PluginConfig>

@@ -1,0 +1,30 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"   # matches Indigo 2025.2's embedded Python
+      # The tests build REAL pyvesync purifiers, so CI installs the plugin's
+      # own requirements.txt - which also proves that file installs.
+      - name: Install the plugin's requirements and the test tools
+        run: |
+          pip install -r "Levoit.indigoPlugin/Contents/Server Plugin/requirements.txt"
+          pip install pytest ruff
+      # tests/run.sh IS the gate - pytest, py_compile, XML well-formedness and
+      # ruff, in one place. CI runs the same script rather than restating it.
+      - name: Tests (tests/run.sh)
+        run: ./tests/run.sh

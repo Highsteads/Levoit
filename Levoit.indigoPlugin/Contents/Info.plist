@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>CliveS &amp; Claude</string>
+	<key>CFBundleDisplayName</key>
+	<string>Levoit Purifier</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.clives.indigoplugin.levoit</string>
+	<key>CFBundleName</key>
+	<string>Levoit</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>https://github.com/Highsteads/Levoit</string>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>1.0.0</string>
+	<key>Description</key>
+	<string>Levoit air purifiers (Core 400S and the others pyvesync supports) through the VeSync cloud: on and off, fan speed, mode, child lock, display and timer, with PM2.5, air quality and filter life as device states.</string>
+	<key>GithubInfo</key>
+	<dict>
+		<key>GithubRepo</key>
+		<string>Levoit</string>
+		<key>GithubUser</key>
+		<string>Highsteads</string>
+	</dict>
+	<key>IwsApiVersion</key>
+	<string>1.0.0</string>
+	<key>PluginVersion</key>
+	<string>1.0.0</string>
+	<key>ServerApiVersion</key>
+	<string>3.0</string>
+</dict>
+</plist>

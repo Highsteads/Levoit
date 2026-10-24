@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Devices>
+    <!-- A relay, so the ordinary On / Off / Toggle work from Indigo, triggers,
+         control pages and Dashboards. Everything else is a plugin action. -->
+    <Device type="relay" id="levoitPurifier">
+        <Name>Levoit Air Purifier</Name>
+        <ConfigUI>
+            <Field id="lbl_cid" type="label">
+                <Label>Choose the purifier on your VeSync account. The list comes from the plugin's last check of the account; if it is empty, look in the Event Log for why, then close and reopen this dialog. Leave it on the first choice and the device links itself to the first purifier not already in Indigo.</Label>
+            </Field>
+            <Field id="cid" type="menu" defaultValue="none">
+                <Label>Purifier:</Label>
+                <List class="self" method="purifierMenu" dynamicReload="true"/>
+            </Field>
+            <Field id="address" type="textfield" hidden="true" defaultValue="">
+                <Label>Model:</Label>
+            </Field>
+            <Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+                <Label>Status request:</Label>
+            </Field>
+
+            <Field id="sep_power" type="separator"/>
+            <Field id="restoreOn" type="checkbox" defaultValue="true">
+                <Label>Switch on when power returns:</Label>
+            </Field>
+            <Field id="lbl_restore" type="label" fontSize="small" fontColor="darkgray">
+                <Label>A Core 400S comes back switched off after its power has been off: unplugged, moved to another room or a power cut. With this ticked the plugin switches it back on once it has reconnected.</Label>
+            </Field>
+            <Field id="powerPlug" type="menu" defaultValue="none">
+                <Label>Plug it is on:</Label>
+                <List class="self" method="plugMenu"/>
+            </Field>
+            <Field id="lbl_plug" type="label" fontSize="small" fontColor="darkgray">
+                <Label>Optional: a smart plug that measures power. The plugin then sees its power come back straight away, even from a short unplug, and Dashboards shows the purifier's power and running cost from it. Without a plug, it notices the purifier dropping off VeSync and coming back, and only switches it on again if it was on before.</Label>
+            </Field>
+            <Field id="standbyWatts" type="textfield" defaultValue="2.5">
+                <Label>Standby below (W):</Label>
+            </Field>
+            <Field id="lbl_standby" type="label" fontSize="small" fontColor="darkgray">
+                <Label>With a plug chosen, a reading falling from above this to below it means the purifier has gone to standby, and it is switched back on. A Core 400S reads about 1.7 W in standby and 3 W or more running. Ignored in sleep mode. Switching it off from Indigo or the Dashboards Air page keeps it off; the button on the purifier does not.</Label>
+            </Field>
+            <Field id="keptOff" type="textfield" hidden="true" defaultValue="">
+                <Label>Switched off from Indigo:</Label>
+            </Field>
+        </ConfigUI>
+        <States>
+            <State id="mode">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Mode</TriggerLabel>
+                <ControlPageLabel>Mode</ControlPageLabel>
+            </State>
+            <State id="fanLevel">
+                <ValueType>Integer</ValueType>
+                <TriggerLabel>Fan Speed (1-4)</TriggerLabel>
+                <ControlPageLabel>Fan Speed</ControlPageLabel>
+            </State>
+            <State id="pm25">
+                <ValueType>Integer</ValueType>
+                <TriggerLabel>PM2.5 (ug/m3)</TriggerLabel>
+                <ControlPageLabel>PM2.5</ControlPageLabel>
+            </State>
+            <State id="airQuality">
+                <ValueType>Integer</ValueType>
+                <TriggerLabel>Air Quality (1 excellent to 4 poor, 0 unknown)</TriggerLabel>
+                <ControlPageLabel>Air Quality</ControlPageLabel>
+            </State>
+            <State id="airQualityText">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Air Quality (words)</TriggerLabel>
+                <ControlPageLabel>Air Quality (words)</ControlPageLabel>
+            </State>
+            <State id="filterLife">
+                <ValueType>Integer</ValueType>
+                <TriggerLabel>Filter Life (%)</TriggerLabel>
+                <ControlPageLabel>Filter Life</ControlPageLabel>
+            </State>
+            <State id="childLock">
+                <ValueType>Boolean</ValueType>
+                <TriggerLabel>Child Lock</TriggerLabel>
+                <ControlPageLabel>Child Lock</ControlPageLabel>
+            </State>
+            <State id="displayOn">
+                <ValueType>Boolean</ValueType>
+                <TriggerLabel>Display On</TriggerLabel>
+                <ControlPageLabel>Display On</ControlPageLabel>
+            </State>
+            <State id="autoPreference">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Automatic Mode Setting</TriggerLabel>
+                <ControlPageLabel>Automatic Mode Setting</ControlPageLabel>
+            </State>
+            <State id="deviceOnline">
+                <ValueType>Boolean</ValueType>
+                <TriggerLabel>Connected to VeSync</TriggerLabel>
+                <ControlPageLabel>Connected to VeSync</ControlPageLabel>
+            </State>
+            <State id="lastUpdate">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Last Update</TriggerLabel>
+                <ControlPageLabel>Last Update</ControlPageLabel>
+            </State>
+        </States>
+    </Device>
+</Devices>
